@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📚 Book Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <span id="navtop"></span>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-4 sticky-top" >
+  <div class="container-fluid">
+    <a class="navbar-brand text-info fs-4" href="/">📚 Simant Library</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Library</a>
+        </li>
+      </ul>
+     <form class="d-flex " >
+        <input class="form-control me-2" type="text" id="search" onblur="this.value='';showBooks();showFavBooks()" onkeyup="showAllBook(this.id)" placeholder="Search" >
+        <button class="btn btn-info" id="searchBtn" type="button">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h2 class="text-center text-secondary py-2 fs-2" >Simant Library 🎉</h2>
+    <hr/>
+<div class="container-fluid px-5 row">
+
+  <!---form----->
+  
+  <div class="left col-sm-12 col-md-6 order-2 order-sm-2 order-md-1">
+    <form class="w-100">
+    <div class="mb-3">
+      <label for="BookName" class="label-form mb-2">Book Name</label>
+      <input type="text" class="form-control" id="BookName"placeholder="Book Name"/>
+    </div>
+    <div class="mb-3">
+      <label for="Author" class="label-form mb-2">Author</label>
+      <input type="text" class="form-control" id="Author" placeholder="Authore Name"/>
+    </div>
+      <div class="mb-3">
+        <span >Topic</span>
+     
+        <div class="form-check mt-2">
+          
+      <input class="form-check-input checked_value" type="radio" name="interested_topic" id="Adventure" value="Adventure" checked>
+      <label class="form-check-label" for="Adventure">
+        Adventure
+      </label>
+    </div>
+        <div class="form-check">
+      <input class="form-check-input checked_value" type="radio" name="interested_topic" id="story" value="Ascent Story" >
+      <label class="form-check-label" for="story">
+        Ascent Story
+      </label>
+    </div>
+        <div class="form-check">
+      <input class="form-check-input checked_value" type="radio" name="interested_topic" id="Motivational" value="Motivational" >
+      <label class="form-check-label" for="Motivational">
+        Motivational
+      </label>
+    </div>
+           </div>
+     <div class="mt-3 form-check">
+    <input type="checkbox" class="form-check-input" id="fav">
+    <label class="form-check-label" for="fav">Add to favourite book🤩🤩🤩</label>
+  </div>
+      <button type="submit" id="sub-btn" class="btn btn-info my-3">Add Book</button>
+      </form>
+  </div>
+  <!---copy from json image---->
+     <div class="right p-3 col-sm-12 col-md-6 order-1 order-sm-1 order-md-2">
+              <img class="w-100" src="https://static.vecteezy.com/system/resources/previews/006/989/520/non_2x/a-group-of-students-are-actively-studying-online-isometric-online-library-illustration-concept-group-of-people-reading-book-and-sit-on-big-books-composition-vector.jpg" alt="book lover"/>
+          </div>
+</div>
+
+    <div class="contianer-fluid" >
+      
+      <h3 class="text-center fs-4">All Books</h3>
+       
+      
+      <hr class="m-0 mb-2"/>
+      <div class="px-4 table-responsive-sm table-responsive-md">
+        
+        <table class="table table-info text-nowrap table-striped table-bordered table-hover align-middle text-center caption-top">
+          <caption>List of all books</caption>
+          <thead>
+            <tr class="align-middle">
+              <th scope="col">S No.</th>
+              <th scope="col">BookName</th>
+              <th scope="col">Author</th>
+              <th scope="col">BookType</th>
+              <th scope="col" class="text-center" style="min-width: 200px;width: 300px;">...  <button class="btn btn-sm btn-danger" onclick="bookAllDelete()" id="clearAll" >clear all</button></th>
+            </tr>
+          </thead>
+          <tbody id="allBookList" class="table-group-divider">
+            
+          </tbody>
+      </table>
+      </div>
+    </div>
+    <h3 class="fs-3 text-center my-3">Favourite Books 🤩🤩🤩</h3>
+    <div class="row container m-auto" id="favCard">
+      
+     
+    </div>
+
+    <!---Footer section---->
+     
+    <footer class="container-fluid row  p-3 mt-3 bg-dark" >
+      
+      <div class="col-12 col-md-8">
+        <h5 class="text-info">📚 Simant Library</h5>
+        <address class="text-white">
+          New Boys Hostel A&B Block , Babu Banarasi Das Northern India Institute of Technology <br> 
+          Sector II, Dr. Akhilesh Das Nagar, Ayodhya Road, Lucknow-226028, Uttar Pradesh, India
+        </address>
+      </div>
+      <div class="col-12 col-md-4 text-white" >
+      <p class="m-1">Contact:- 7905541098 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="#navtop" class="text-primary text-decoration-none"> Back to top </a></p>
+      <p class="m-1">Email:-  2000560100104@gmail.com</p>
+      </div>
+      <p class="text-white text-end m-0">All right reserve © 2022</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+     <script src="script.js"></script>
+
+ <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+  </body>
+</html>
